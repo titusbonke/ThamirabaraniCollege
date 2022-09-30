@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Butterfly Premium Quality">
+    <meta name="description" content="Butterfly Premium Quality">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Butterfly Premium Quality</title>
+
+    <!-- FavIcon Link -->
+    <link rel="icon" href="assets/images/favicon.png" sizes="32x32" type="image/png">
+
+    <!-- Google Fonts -->
+    <link href="../../css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+
+
+
+    <!-- Bootstrap CSS Link -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- Swiper Slider CSS Link -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.css">
+
+    <!-- Fancybox CSS Link -->
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Main Style CSS Link -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55R928CFB6"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M2XPE46FYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-M2XPE46FYQ');
+    </script>
+    <script src="/assets/js1/jquery-1.4.1.min.js"></script>
+    
+
+
+    <style>
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 17px;
+            right: 39px;
+            z-index: 99;
+            font-size: 21px;
+            border: none;
+            outline: none;
+            background-color: #000000;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+            #myBtn:hover {
+                background-color: #ffab00;
+            }
+    </style>
+</head>
+
+<body class="body-fixed">
+
+
+    
+
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header-logo">
+                        <a title="Foodify" href="home">
+                            <img class="logo logo1" src="/assets/images/logo.png" alt="Butterfly Premium Quality">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="main-navigation">
+                        <button class="menu-toggle"><span></span><span></span></button>
+                        <div class="header-menu">
+                            <ul class="menu">
+                                <li><a title="Home" class="" href="home">Home</a></li>
+                                <li><a title="About" class="" href="about-us">About Us</a></li>
+                                <li><a title="Services" class="" href="services">Services</a></li>
+                                <li><a title="Products" class="" href="products-category">Products</a></li>
+
+                                
+                                
+                                <li><a title="Contact" class="" href="contact">Contact</a></li>
+
+
+
+
+
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End of Header-->
+
+
+
+
+
+    
+
+
+
+
+
+<script src="/assets/js1/pagebar.js"></script>
+<script src="/assets/js1/jquery-1.4.1.min.js"></script>
+<script src="/assets/js1/jquery.js"></script>
+<script src="/assets/js1/jquery.fancybox.js"></script>
+<link href="/assets/js1/jquery.fancybox.min.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function getParam(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regexS = "[\\?&]" + name + "=([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results = regex.exec(window.location.href);
+        if (results == null)
+            return "";
+        else
+            return results[1];
+    }
+    var APIKEY = getParam('APIKEY');
+    var pg = getParam('page');
+    if (pg == 0) {
+        pg = 1;
+    }
+    var pagesize = 1;
+    $(document).ready(function () {
+        var urlAjax = "https://api.skydesk.in/rest/v1/Gallery.svc/Getimages";
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: urlAjax,
+            data: '{"UserEmailId":"deepamtradinginc@gmail.com","AlbumKey": "' + APIKEY + '","PageSize": "' + pagesize + '","StartPage": "' + pg + '","Sort": "modified_on","Order": "desc"}',
+
+            processData: false,
+            crossDomain: true,
+            dataType: "json",
+            success: function (response) {
+                var customers = eval(response.d);
+                var html = "";
+                var i = 1;
+                $.each(customers, function () {
+
+                    html += "<div class='col-lg-4'></div>";
+                    html += "<div class='col-lg-4'> <div class='blog-box'> ";
+                    html += " <div class='blog-img back-img'><a href='" + this.orginalimage + ".jpeg' class='lightbox-image link' data-fancybox='images' data-caption='" + this.ContentHeading + "'><img class='img-fluid' src='" + this.orginalimage + ".jpeg' alt='Butterfly Premium Quality'></a></div></div></div> ";
+                    html += "<div class='col-lg-4'></div>";
+                    html += "<div class='col-lg-2'></div>";
+                    html += "<div class='col-lg-8'> ";
+                    html += " <div class='blog-text'>";
+                    html += "<h3 class='h3-title' style='text-align:center;'>" + this.ContentHeading + " </h3>";
+                    html += "<p>" + this.Description + "</a></h3>";
+
+                    html += "  </div>";
+                    html += "  </div>";
+                    html += "<div class='col-lg-2'></div>";
+
+                    //html += "<div class='col-lg-4'> <div class='blog-box'> ";
+                    //html += " <div class='blog-img back-img'><a href='" + this.orginalimage + ".jpeg' class='lightbox-image link' data-fancybox='images' data-caption='" + this.ContentHeading + "'><img class='img-fluid' src='" + this.orginalimage + ".jpeg' alt='Butterfly Premium Quality'></a></div></div></div> ";
+
+                    //html += "<div class='col-lg-8'> ";
+                    //html += " <div class='blog-text'>";
+                    //html += "<h3 class='h3-title'>" + this.AlbumName + " </h3>";
+                    //html += "<p>" + this.Description + "</a></h3>";
+
+                    //html += "  </div>";
+                    //html += "  </div>";
+
+
+
+
+
+
+
+
+                    i++
+                    var count = this.ImgCount;
+                    /*pagebar('products-gallery?APIKEY=' + APIKEY + '&imgcount=' + count, count, pg, pagesize)*/
+                });
+                $("#results").html(html == "" ? "No Images" : html);
+            },
+            error: function (a, b, c) {
+            }
+        });
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="inner-banner bg-light repeat-img" style="background-image: url('assets/images/blog-pattern-bg.png');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 m-auto">
+                <div class="banner-text text-center">
+                    <div class="breadcrumb-wp mb-3">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="home" title="Home">home</a></li>
+                            <li class="breadcrumb-item active">
+                                Our Products
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="our-menu bg-light repeat-img" style="background-image: url('assets/images/menu-bg.png');">
+
+    <div class="sec-wp">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-title text-center ">
+                        
+                        <h2 class="h2-title" style="color: #ffcb05;">Our Products</h2>
+                        <div class="sec-title-shape mb-4">
+                            <img src="assets/images/title-shape.png" style="height: 30px;" alt="Butterfly Premium Quality">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!--site-main start-->
+<div class="site-main" style="background: #fff!important">
+
+    <!--grid-section-->
+    <section class="ttm-row grid-section clearfix">
+        <div class="container">
+            <div class="row pb-20">
+                <div class="col-md-8"></div>
+                    <div class="col-md-4"  style="margin-top: 20px; margin-bottom: 20px; text-align: right">
+                        <a class="sec-btn" onclick="history.back()" style="cursor: pointer;color: #000000">Go Back</a>
+                    </div>
+                </div>
+                <div class="row" id="results" style="margin-bottom:20px">
+
+
+                </div>
+                <div class="row" id="result">
+
+                </div>
+            </div>
+    </section><!--grid-section end-->
+
+
+
+</div><!--site-main end-->
+
+
+
+
+
+
+
+    <!-- Start of Site Footer-->
+    <footer class="site-footer">
+        <div class="top-footer section" style="background-color: #ececec;">
+            <div class="footer-shape rellax" data-rellax-speed="1" data-rellax-percentage="0.5">
+                
+            </div>
+            <div class="sec-wp">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="footer-info">
+                                <div class="footer-logo">
+                                    <a href="home">
+                                        <img src="/assets/images/logo1.png" alt="Butterfly Premium Quality" style="width: 200px;">
+                                    </a>
+                                </div>
+                                <p>
+                                    Butterfly Premium Quality Works, specializing in construction chemical industry requirements across an extensive range of sectors, including industrial, commercial, residential, and infrastructure.
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="footer-flex-box">
+                                
+                                <div class="footer-menu">
+                                    <h3 class="h3-title" style="color: #ffcb05;">Address</h3>
+                                    <ul>
+                                        <li><strong>Butterfly Premium Quality</strong></li>
+                                        <li>No 20/436, 8th Middle Street,</li>
+                                        <li>Thiyagaraja Nagar,</li>
+                                        <li>Tirunelveli – 627001,</li>
+                                        <li>Tamilnadu, India.</li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="footer-flex-box">
+
+                                <div class="footer-menu">
+                                    <h3 class="h3-title" style="color: #ffcb05;">links</h3>
+                                    <ul class="column-2">
+
+                                        <li><i class="fa fa-dot-circle" style="margin-right: 10px; font-size: 13px;"></i><a title="Home" href="home">Home</a></li>
+                                        <li><i class="fa fa-dot-circle" style="margin-right: 10px; font-size: 13px;"></i><a title="About_Us" href="about-us">About Us</a></li>
+                                        <li><i class="fa fa-dot-circle" style="margin-right: 10px; font-size: 13px;"></i><a title="Services" href="services">Services</a></li>
+                                        <li><i class="fa fa-dot-circle" style="margin-right: 10px; font-size: 13px;"></i><a title="Products" href="products-category">Products</a></li>
+                                        <li><i class="fa fa-dot-circle" style="margin-right: 10px; font-size: 13px;"></i><a title="Contact" href="contact">Contact</a></li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer" style="background-color: #ffcb05;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="copyright-text">
+
+                            <span class="pt-copyright" style="color: #202020; font-family: arial;">
+                                <span>&copy;  Butterfly Premium Quality. 2022 - 2023. All rights reserved. <a href="http://www.sathyainfo.com/" target="_blank" style="font-family: arial; color: #202020; font-size: 16px;">Powered by SATHYA</a></span>
+
+                            </span>
+
+                        </div>
+                        <!-- hitwebcounter Code START -->
+                        <!--<a href="https://www.hitwebcounter.com" target="_blank">
+                    <img src="https://hitwebcounter.com/counter/counter.php?page=7996164&style=0006&nbdigits=5&type=ip&initCount=0" title="Free Counter" Alt="Butterfly Premium Quality" border="0" />
+                </a>-->
+                    </div>
+                </div>
+                <div class="wapp" style="right: 30px;position: fixed;bottom: 70px;z-index:99998;">
+                    <a onclick="sendWhatsappMessage()" style="height: 55px; font-size: 32px; width: 55px; border-radius: 50px; line-height: 55px; background-image: linear-gradient(#25d366, #029539); color: #fff; text-align: center;" class="fa fa-whatsapp side"></a>
+                </div>
+                <div class="loader" style="right: 8px; position: fixed; bottom: 47px; z-index: 99997;">
+
+                </div>
+                
+                <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+
+
+
+
+    <script>
+        function sendWhatsappMessage() {
+            var isMobile = mobilecheck();
+            var apilink = 'http://';
+            apilink += isMobile ? 'api' : 'web';
+            apilink += '.whatsapp.com/send?phone=919514413239 &text=Hi! I want to know Butterfly Premium Quality Products details';
+            window.open(apilink, 'popUpWindow', 'height=700,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
+        }
+        function mobilecheck() {
+            var check = false;
+            (function (a) { if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true; })(navigator.userAgent || navigator.vendor || window.opera);
+            return check;
+        }
+    </script>
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+
+
+    <script src="assets/js/font-awesome.min.js"></script>
+
+    <!-- Swiper Slider JS Link -->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <!-- Mixitup js Link -->
+    <script src="assets/js/jquery.mixitup.min.js"></script>
+
+    <!-- Fancybox JS Link -->
+    <script src="assets/js/jquery.fancybox.min.js"></script>
+
+    <!-- Parallax JS Link -->
+    <script src="assets/js/parallax.min.js"></script>
+
+    <!-- GSAP JS Link -->
+    <script src="assets/js/gsap.min.js"></script>
+
+    <!-- ScrollTrigger JS Link -->
+    <script src="/assets/js/ScrollTrigger.min.js"></script>
+
+    <!-- ScrollToPlugin JS Link -->
+    <script src="assets/js/ScrollToPlugin.min.js"></script>
+
+    <!-- Rellax JS Link -->
+    <script src="assets/js/rellax.min.js"></script>
+
+    <!-- Rellax Custom JS Link -->
+    <script src="assets/js/rellax-custom.js"></script>
+
+    <!-- Smooth Scroll JS Link -->
+    <script src="assets/js/smooth-scroll.js"></script>
+
+    <!-- Custom JS Link -->
+    <script src="assets/js/custom.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // variables
+            var toTop = $('.scrolltop');
+            // logic
+            toTop.on('click', function () {
+                $('html, body').animate({
+                    scrollTop: $('html, body').offset().top,
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
